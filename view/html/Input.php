@@ -17,6 +17,20 @@ class Input extends Tag{
     return $this->type('text');
   }
 
+  // https://stackoverflow.com/questions/14447668/input-type-number-is-not-showing-a-number-keypad-on-ios
+  public function typeNumber(){
+    $this->type('number');
+    return $this->setAttribute('pattern', '\d*');
+  }
+
+  public function typePhone(){
+    return $this->type('tel');
+  }
+
+  public function typeEmail(){
+    return $this->type('email');
+  }
+
   public function typeHidden(){
     return $this->type('hidden');
   }
@@ -49,6 +63,11 @@ class Input extends Tag{
 
   public function setMaxLength($maxLength){
     return $this->setAttribute('maxlength', $maxLength);
+  }
+
+  public function setAndForceMaxLength($maxLength){
+    $this->setOnInput("javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);");
+    return $this->setMaxLength($maxLength);
   }
 
   public function setRequired($required='required'){
