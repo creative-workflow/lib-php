@@ -254,7 +254,7 @@ trait Html{
           if (in_array($name, static::$dataAttributes)) {
             foreach ($value as $n => $v) {
               if (is_array($v)) {
-                $html .= " $name-$n='" . Json::htmlEncode($v) . "'";
+                $html .= " $name-$n='" . static::jsonHtmlEncode($v) . "'";
               } else {
                 $html .= " $name-$n=\"" . static::encode($v) . '"';
               }
@@ -270,7 +270,7 @@ trait Html{
             }
             $html .= " $name=\"" . static::encode(static::cssStyleFromArray($value)) . '"';
           } else {
-            $html .= " $name='" . Json::htmlEncode($value) . "'";
+            $html .= " $name='" . static::jsonHtmlEncode($value) . "'";
           }
       } elseif ($value !== null) {
         $html .= " $name=\"" . static::encode($value) . '"';
@@ -286,6 +286,10 @@ trait Html{
 
   public static function decode($content){
     return htmlspecialchars_decode($content, ENT_QUOTES);
+  }
+
+  public static function jsonHtmlEncode($input){
+    return htmlspecialchars(json_encode($input), ENT_QUOTES,'UTF-8');
   }
 
   public static function cssStyleFromArray(array $style){
