@@ -21,6 +21,11 @@ class jQuery extends expression\AbstractExpression{
     return new jquery\GetScript($url, $callback);
   }
 
+  public function getScripts(){
+    $urls = func_get_args();
+    return new jquery\GetScripts($urls, $callback);
+  }
+
   public function anonymousFunction(array $args, $body){
     return new jquery\AnonymousFunction($args, $body);
   }

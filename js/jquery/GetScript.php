@@ -3,6 +3,9 @@
 namespace cw\php\js\jquery;
 
 class GetScript extends \cw\php\js\expression\AbstractExpression{
+  private $url;
+  private $callback;
+
   public function __construct($url, $callback = null){
     $this->url = $url;
     if($callback)
