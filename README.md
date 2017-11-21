@@ -7,8 +7,9 @@ git submodule add https://github.com/creative-workflow/lib-php.git ./wordpress/w
 
 
 ### Core
-  * Singleton trait
+  * Singleton-Trait
   * Autoloader (namespaces or snakecase)
+  * ArrayAsObject (properties and array_* methods)
 
 ### js
 Do something like this:
@@ -60,4 +61,24 @@ echo $html->script(
 
 ...
 
+```
+
+### view/html/Tag - Label - Input
+Do something like this:
+
+```
+$labelTag = new Label('zip_code');
+$labelTag->addContent('Zip-Code: ');
+
+$inputTag = new Input('zip_code');
+$inputTag->typeNumber()
+         ->setId('zip_code')
+         ->setPlaceholder('Your Zip-Code')
+         ->setRequired()
+         ->setAutoCompleteType('postal-code')
+         ->setAndForceMaxLength(5);
+
+return (new Tag())->addClass('row')
+                  ->addContent($labelTag)
+                  ->addContent($inputTag);
 ```
