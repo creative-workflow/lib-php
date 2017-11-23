@@ -5,7 +5,7 @@ namespace cw\php\js;
 class jQuery extends expression\AbstractExpression{
   use \cw\php\core\traits\Singleton;
 
-  protected static $onReady = [];
+  protected $onReady = [];
 
   public function when(){
     $args = func_get_args();
@@ -33,14 +33,14 @@ class jQuery extends expression\AbstractExpression{
   public function onReady(){
     $args = func_get_args();
 
-    static::$onReady = array_merge(static::$onReady, $args);
+    $this->onReady = array_merge($this->onReady, $args);
 
     return $this;
   }
 
   // implement
   public function toJs(){
-    return implode('; ', static::$onReady);
+    return implode('; ', $this->onReady);
   }
 
   // override
