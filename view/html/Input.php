@@ -5,8 +5,8 @@ namespace cw\php\view\html;
 class Input extends Tag{
   public function __construct($name, $value=''){
     parent::__construct('input');
-    $this->setName($name);
-    $this->setValue($value);
+    $this->setName($name)
+         ->setValue($value);
   }
 
   public function type($type){
@@ -17,18 +17,33 @@ class Input extends Tag{
     return $this->type('text');
   }
 
-  // https://stackoverflow.com/questions/14447668/input-type-number-is-not-showing-a-number-keypad-on-ios
-  public function typeNumber(){
+  public function typeTextAlphaNumeric(){
+  return $this->setInputMode('inputmode', 'verbatim')
+              ->type('text');
+  }
+
+  public function typeNumber($withoutSpinner = false){
     $this->type('number');
+    if($withoutSpinner){
+      $this->setInputMode('inputmode', 'numeric')
+           ->addClass('without-spinner');
+      // Add something like this to your sass files:
+      // input.without-spinner::-webkit-outer-spin-button,
+      // input.without-spinner::-webkit-inner-spin-button
+      //   -webkit-appearance: none
+      //   margin: 0
+    }
     return $this->setAttribute('pattern', '\d*');
   }
 
   public function typePhone(){
-    return $this->type('tel');
+    return $this->setInputMode('tel')
+                ->type('tel');
   }
 
   public function typeEmail(){
-    return $this->type('email');
+    return $this->setInputMode('email')
+                ->type('email');
   }
 
   public function typeHidden(){
@@ -41,6 +56,11 @@ class Input extends Tag{
 
   public function typeFile(){
     return $this->type('file');
+  }
+
+  public function setInputMode($mode){
+    return $this->setAttribute('inputmode', $mode)
+                ->setAttribute('x-inputmode', $mode);
   }
 
   public function setValue($value){
@@ -56,9 +76,8 @@ class Input extends Tag{
   }
 
   public function setAutoCompleteType($type){
-    $this->setAttribute('autocompletetype', $type);
-    $this->setAttribute('x-autocompletetype', $type);
-    return $this;
+    return $this->setAttribute('autocompletetype', $type)
+                ->setAttribute('x-autocompletetype', $type);
   }
 
   public function setMaxLength($maxLength){
