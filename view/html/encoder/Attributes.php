@@ -17,14 +17,11 @@ class Attributes{
 
     $tmp = [];
     foreach($input as $key => $value){
-      if(is_array($value)){
-        $value = self::encodeValueSingleQouted(Json::encode($value));
-        $tmp[] = "$key='$value'";
-      }
-      else{
-        $value = self::encodeValue($value);
-        $tmp[] = $key . '="' . $value . '"';
-      }
+      if(is_array($value))
+        $value = Json::encode($value);
+
+      $value = self::encodeValue($value);
+      $tmp[] = $key . '="' . $value . '"';
     }
 
     return implode(' ', $tmp);
@@ -40,21 +37,11 @@ class Attributes{
     );
   }
 
-  public static function encodeValueSingleQouted($value){
-    return self::escapeSingleQuotes(
-      self::tranformHtmlSpecialChars($value)
-    );
-  }
-
-  public static function escapeSingleQuotes($input){
-    return addcslashes($input, "'");
-  }
-
   public static function escapeDoubleQuotes($input){
     return addcslashes($input, '"');
   }
 
   public static function tranformHtmlSpecialChars($input){
-    return htmlspecialchars($input, ENT_NOQUOTES, 'UTF-8');
+    return htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
   }
 }
