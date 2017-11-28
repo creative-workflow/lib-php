@@ -10,6 +10,7 @@ git submodule add https://github.com/creative-workflow/lib-php.git ./wordpress/w
   * Singleton-Trait
   * Autoloader (namespaces or snakecase)
   * ArrayAsObject (properties and array_* methods)
+  * ObjectAsArray
 
 ### js
 Do something like this:
