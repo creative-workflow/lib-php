@@ -1,0 +1,22 @@
+{
+  "name": "creative-workflow.php",
+  "homepage": "https://github.com/creative-workflow/lib-php",
+  "authors": [
+    "Tom Hanoldt <tom@creative-workflow.berlin>"
+  ],
+  "description": "php helper library",
+  "main": "",
+  "keywords": [
+    "creative-workflow",
+    "php",
+    "lib-php"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

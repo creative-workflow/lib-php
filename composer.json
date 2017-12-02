@@ -1,0 +1,26 @@
+{
+    "name": "creative-workflow/lib-php",
+    "type": "library",
+    "homepage": "https://github.com/creative-workflow/lib-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tom Hanoldt",
+            "email": "tom@creative-workflow.berlin",
+            "homepage": "https://www.tomhanoldt.info",
+            "role": "Developer"
+        }
+    ],
+    "keywords": [
+      "creative-workflow",
+      "php",
+      "lib-php"
+    ],
+    "description": "php helper library",
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload" : {
+      "psr-0" : {"./" : ""}
+    }
+}
