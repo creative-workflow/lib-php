@@ -1,6 +1,5 @@
 {
     "name": "creative-workflow/php",
-    "version": "1.0.0",
     "type": "library",
     "homepage": "https://github.com/creative-workflow/lib-php",
     "license": "MIT",
