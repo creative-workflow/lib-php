@@ -2,6 +2,14 @@
 
 ### Setup
 ```
+bower install --save creative-workflow.php
+
+or
+
+composer require creative-workflow/php
+
+or
+
 git submodule add https://github.com/creative-workflow/lib-php.git ./wordpress/wp-content/themes/child/lib/cw/php
 ```
 
