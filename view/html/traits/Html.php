@@ -100,6 +100,10 @@ trait Html{
     return $this->tag('img', '', $options);
   }
 
+  public function img($src, $options = []){
+    return $this->image($src, $options);
+  }
+
   public function label($content, $for = null, $options = []){
     $options['for'] = $for;
     return $this->tag('label', $content, $options);
