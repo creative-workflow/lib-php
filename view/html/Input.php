@@ -76,7 +76,8 @@ class Input extends Tag{
   }
 
   public function setAutoCompleteType($type){
-    return $this->setAttribute('autocompletetype', $type)
+    return $this->setAttribute('autocomplete', $type)
+                ->setAttribute('autocompletetype', $type)
                 ->setAttribute('x-autocompletetype', $type);
   }
 
