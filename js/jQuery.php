@@ -48,7 +48,7 @@ class jQuery extends expression\AbstractExpression{
   }
 
   // override
-  public function toJsWrapped(){
+  public function toJsWrapped($_i = '', $_o = ''){
     return parent::toJsWrapped('jQuery', '$');
   }
 }
