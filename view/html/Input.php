@@ -22,23 +22,27 @@ class Input extends Tag{
               ->type('text');
   }
 
-  public function typeNumber($withoutSpinner = false){
+  public function typeNumber($withoutSpinner = false, $pattern='\d*'){
     $this->type('number');
     if($withoutSpinner){
       $this->setInputMode('inputmode', 'numeric')
            ->addClass('without-spinner');
-      // Add something like this to your sass files:
-      // input.without-spinner::-webkit-outer-spin-button,
-      // input.without-spinner::-webkit-inner-spin-button
-      //   -webkit-appearance: none
-      //   margin: 0
+          // add something like this in your css:
+          // input.without-spinner
+          //   -moz-appearance: textfield
+          //
+          // input.without-spinner::-webkit-outer-spin-button,
+          // input.without-spinner::-webkit-inner-spin-button
+          //   -webkit-appearance: none
+          //   margin: 0
     }
-    return $this->setAttribute('pattern', '\d*');
+    return $this->setAttribute('pattern', $pattern);
   }
 
-  public function typePhone(){
-    return $this->setInputMode('tel')
-                ->type('tel');
+  public function typePhone($pattern='^[0-9\-\+\s\(\)]*$'){
+    return $this->type('tel')
+                ->setInputMode('tel')
+                ->setAttribute('pattern', $pattern);
   }
 
   public function typeEmail(){
