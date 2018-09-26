@@ -9,7 +9,10 @@ class Wrapper extends AbstractExpression{
   }
 
   public function append($input){
-    $this->js = array_merge($this->js, (array)$input);
+    if(!is_array($input))
+      $input = [$input];
+      
+    $this->js = array_merge($this->js, $input);
 
     return $this;
   }
