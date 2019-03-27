@@ -304,4 +304,21 @@ trait Html{
     // return null if empty to avoid rendering the "style" attribute
     return $result === '' ? null : rtrim($result);
   }
+
+  public static function urls2a($input){
+    return preg_replace('"\b([^\'\"]https?://\S+)"', '<a href="$1">$1</a>', $input);
+  }
+
+  public static function mails2a($input){
+    $mail_pattern = "/([A-z0-9\._-]+\@[A-z0-9_-]+\.)([A-z0-9\_\-\.]{1,}[A-z])/";
+    $str = preg_replace($mail_pattern, '<a href="mailto:$1$2">$1$2</a>', $input);
+
+    return $str;
+  }
+
+  public static function addTargetBlank($input){
+    return preg_replace("/<a([^>]+)>/is","<a$1 target=\"_blank\">",  $input);
+  }
+
+
 }
