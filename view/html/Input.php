@@ -36,6 +36,9 @@ class Input extends Tag{
           //   -webkit-appearance: none
           //   margin: 0
     }
+    else
+      $this->addClass('with-spinner');
+    
     return $this->setAttribute('pattern', $pattern);
   }
 
