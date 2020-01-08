@@ -84,7 +84,8 @@ trait Html{
   }
 
   public function image($src, $options = []){
-    $options['src'] = $src;
+    if(!empty($src))
+      $options['src'] = $src;
 
     if (isset($options['srcset']) && is_array($options['srcset'])) {
       $srcset = [];
